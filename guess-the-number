@@ -1,0 +1,33 @@
+import random
+
+
+def check_difficulty():
+    print("Welcome to the number Guessing Game")
+    print("I'm thinking of a number between 1 and 100.")
+    difficulty = input("Choose a difficulty. Type 'easy' or 'hard': ")
+    if difficulty.lower() == "easy":
+        return 10
+    elif difficulty.lower() == "hard":
+        return 5
+
+
+def play_game(no_of_turns, ran_num):
+    i = 1
+    while no_of_turns:
+        print(f"You have {no_of_turns} remaining to guess the number.")
+        user_guessed = int(input("Make a Guess: "))
+        if user_guessed == ran_num:
+            print(f"You have Guessed the correct no in {i} turns")
+            break
+        elif user_guessed < ran_num:
+            print("Too Low")
+        elif user_guessed > ran_num:
+            print("Too High")
+
+        i += 1
+        no_of_turns -= 1
+        if no_of_turns == 0:
+            print("You've run out of guesses, you lose.")
+
+
+play_game(check_difficulty(), random.randint(1, 100))
